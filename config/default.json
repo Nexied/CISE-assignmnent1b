@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://developer:developer123@seeds-cluster.lofn1.mongodb.net/seedsDB?retryWrites=true&w=majority"
+ }
+ 

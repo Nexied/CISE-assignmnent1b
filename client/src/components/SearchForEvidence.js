@@ -1,8 +1,8 @@
-
+import React, {useState, useEffect} from 'react';
 
 export const SearchForEvidence = () => {
     return (
-        <div className="container-fluid bg-dark text-light">
+        <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
             <div className="row">
                 <div className="col-12">
                     {/* Nav bar here? */}
@@ -18,19 +18,21 @@ export const SearchForEvidence = () => {
                     <form>
                         <div className="form-group col-3">
 
-                            <label className="lead fs-3">SE Practice:</label>
+                            <label className="lead fs-2">SE Practice:</label>
                             <select className="form-control" name="se-practice">
+                                <option disabled hidden selected>Select SE Practice</option>
                                 <option value="TDD">TDD</option>
                             </select>
                             <br></br>
 
-                            <label className="lead fs-3">Claim:</label>
+                            <label className="lead fs-2">Claim:</label>
                             <select className="form-control" name="claim">
+                                <option disabled hidden selected>Select Claim</option>
                                 <option value="Improves Code Quality">Improves Code Quality</option>
                             </select>
                             <br></br>
 
-                            <label className="lead fs-3">Year Range:</label>
+                            <label className="lead fs-2">Year Range:</label>
                             <input className="form-control" type="text" name="year-start" placeholder="Start Year"></input>
                             <input className="form-control" type="text" name="year-end" placeholder="End Year"></input>
                         </div>

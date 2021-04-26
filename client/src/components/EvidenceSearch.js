@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { EvidenceCard } from './EvidenceCard';
 
 export const EvidenceSearch = () => {
 
@@ -14,7 +15,8 @@ export const EvidenceSearch = () => {
         endYear: ''
     });
 
-    const [testObj, setTestObj] = useState({});
+    const [testObj, setTestObj] = useState([{}]);
+    let evidenceCardTest;
 
     //Temporary SE Methods list
     const seList = [
@@ -68,6 +70,14 @@ export const EvidenceSearch = () => {
         e.preventDefault();
     }
 
+    if(testObj) {
+        console.log("There is evidence!");
+
+        evidenceCardTest = testObj.map((evid, k) =>
+            <EvidenceCard evidenceData={evid} key={k} />
+        );
+    }
+
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
             <div className="row">
@@ -104,6 +114,9 @@ export const EvidenceSearch = () => {
                             <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit" onSubmit={onSubmit}>Search</button>
                         </div>
                     </form>
+                </div>
+                <div>
+                    {evidenceCardTest}
                 </div>
             </div>
         </div>

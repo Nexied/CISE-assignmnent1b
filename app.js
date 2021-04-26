@@ -3,6 +3,9 @@ const connectDB = require('./config/db');
 
 const app = express();
 
+const routes = require('./routes/api/evidences');
+
+app.use('/api/evidences', routes);
 
 //connect to DB 
 connectDB();

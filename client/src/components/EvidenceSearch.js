@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Select from 'react-select';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const EvidenceSearch = () => {
 
@@ -11,6 +13,8 @@ export const EvidenceSearch = () => {
         startYear: '',
         endYear: ''
     });
+
+    const [testObj, setTestObj] = useState({});
 
     //Temporary SE Methods list
     const seList = [
@@ -35,12 +39,24 @@ export const EvidenceSearch = () => {
         
     useEffect(() => {
         console.log("Website loaded!");
+        //console.log("Print id: " + props.match.params.id);
+        axios
+            .get('http://localhost:8082/api/evidences/')
+            .then(res => {
+                console.log("Print-EvidenceSearch-API-response: " + res.data);
+                console.log("The res data: " + res.data);
+                setTestObj(res.data);
+            })
+            .catch(err => {
+                console.log("Error from EvidenceSearch" + err.name);
+            })      
     }, []);
 
     const onChange = e => {
         console.log(e);
         setSearchInfo({ ...searchInfo, [e.target.name]: e.target.value });
         console.log(searchInfo);
+        console.log(testObj);
     }
 
     const onSelectChange = (e, value) => {
@@ -50,8 +66,6 @@ export const EvidenceSearch = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-
-
     }
 
     return (
@@ -72,21 +86,13 @@ export const EvidenceSearch = () => {
                         <div className="form-group col-3">
 
                             <label className="lead fs-2">SE Practice:</label>
-                            {/* <select className="form-control" name="se-practice">
-                                <option disabled hidden selected>Select SE Practice</option>
-                                {optionsList}
-                            </select> */}
-                            <Select className="text-dark" name="seMethod" onChange = {(e) => {onSelectChange(e, "seMethod")}}
+                            <Select className="text-dark" onChange = {(e) => {onSelectChange(e, "seMethod")}}
                                 options={seList} 
                             />
                             <br></br>
 
                             <label className="lead fs-2">Claim:</label>
-                            {/* <select className="form-control" name="claim">
-                                <option disabled hidden selected>Select Claim</option>
-                                <option value="Improves Code Quality">Improves Code Quality</option>
-                            </select> */}
-                            <Select className="text-dark" name="claim" onChange={onSelectChange("seClaim")}
+                            <Select className="text-dark" onChange={(e) => onSelectChange(e, "claim")}
                                 options={claimsList} 
                             />
                             <br></br>
@@ -95,7 +101,7 @@ export const EvidenceSearch = () => {
                             <input className="form-control" type="text" name="startYear" onChange={onChange} maxLength="4" placeholder="Start Year e.g. 2000"></input>
                             <input className="form-control" type="text" name="endYear" onChange={onChange} maxLength="4" placeholder="End Year e.g. 2010"></input>
 
-                            <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit">Search</button>
+                            <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit" onSubmit={onSubmit}>Search</button>
                         </div>
                     </form>
                 </div>

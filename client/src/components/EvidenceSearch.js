@@ -5,6 +5,12 @@ export const EvidenceSearch = () => {
 
     const [seMethods, setSEMethods] = useState([]);
     const [claims, setClaims] = useState([]);
+    const [searchInfo, setSearchInfo] = useState({
+        seMethod: '',
+        claim: '',
+        startYear: '',
+        endYear: ''
+    });
 
     //Temporary SE Methods list
     const seList = [
@@ -31,6 +37,23 @@ export const EvidenceSearch = () => {
         console.log("Website loaded!");
     }, []);
 
+    const onChange = e => {
+        console.log(e);
+        setSearchInfo({ ...searchInfo, [e.target.name]: e.target.value });
+        console.log(searchInfo);
+    }
+
+    const onSelectChange = (e, value) => {
+        console.log(e);
+        console.log(value);
+    }
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+
+    }
+
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
             <div className="row">
@@ -53,7 +76,7 @@ export const EvidenceSearch = () => {
                                 <option disabled hidden selected>Select SE Practice</option>
                                 {optionsList}
                             </select> */}
-                            <Select className="text-dark"
+                            <Select className="text-dark" name="seMethod" onChange = {(e) => {onSelectChange(e, "seMethod")}}
                                 options={seList} 
                             />
                             <br></br>
@@ -63,14 +86,14 @@ export const EvidenceSearch = () => {
                                 <option disabled hidden selected>Select Claim</option>
                                 <option value="Improves Code Quality">Improves Code Quality</option>
                             </select> */}
-                            <Select className="text-dark"
+                            <Select className="text-dark" name="claim" onChange={onSelectChange("seClaim")}
                                 options={claimsList} 
                             />
                             <br></br>
 
                             <label className="lead fs-2">Year Range:</label>
-                            <input className="form-control" type="text" name="year-start" maxLength="4" placeholder="Start Year e.g. 2000"></input>
-                            <input className="form-control" type="text" name="year-end" maxLength="4" placeholder="End Year e.g. 2010"></input>
+                            <input className="form-control" type="text" name="startYear" onChange={onChange} maxLength="4" placeholder="Start Year e.g. 2000"></input>
+                            <input className="form-control" type="text" name="endYear" onChange={onChange} maxLength="4" placeholder="End Year e.g. 2010"></input>
 
                             <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit">Search</button>
                         </div>

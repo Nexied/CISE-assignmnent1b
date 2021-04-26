@@ -1,8 +1,8 @@
-import { SearchForEvidence } from './components/SearchForEvidence';
+import { EvidenceSearch } from './components/EvidenceSearch';
 
 function App() {
   return (
-    <SearchForEvidence />
+    <EvidenceSearch />
   );
 }
 

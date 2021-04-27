@@ -21,8 +21,6 @@ export const EvidenceSearch = () => {
     const [showResults, setShowResults] = useState(false);
     const [evidenceCardTest, setEvidenceCards] = useState([]);
 
-    const [testObj, setTestObj] = useState({});
-
 
     //Temporary SE Methods list
     const seList = [

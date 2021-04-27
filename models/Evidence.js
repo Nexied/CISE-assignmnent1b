@@ -5,15 +5,18 @@ const EvidenceSchema = new mongoose.Schema({
         type: String, //type of data
         required: true //input is required
     },
-    author:{
+    author: [{
         type: String,
         required: true
-    },
+    }],
     title: {
         type: String,
         required: true
     },
     journal: {
+        type: String
+    },
+    year: {
         type: String
     },
     sePractice:{
@@ -23,7 +26,6 @@ const EvidenceSchema = new mongoose.Schema({
     claim:{
         type: String, 
         required: true,
-        description: "Describe what the paper claims"
     },
     claimStrength: {
         type: String,

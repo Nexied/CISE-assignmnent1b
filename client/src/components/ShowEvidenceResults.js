@@ -29,13 +29,17 @@ export const  ShowEvidenceResults = (props) => {
     }, []);
 
     if(searchResults) {
-        displayItems = searchResults.map((result, k) =>
-            <EvidenceCard evidenceData={result} key={k}/>);
+        displayItems = <table class="table text-light">
+            {
+                searchResults.map((result, k) =>
+                <EvidenceCard evidenceData={result} key={k}/>)
+            }
+        </table>
         console.log("There are results returned");
     }
 
     return (
-        <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
+        <div id="result-container" className="container-fluid bg-dark text-light" style={{height: "100%"}}>
             <div className="row">
                 <div className="col-12">
                     {/* Nav bar here? */}

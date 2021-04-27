@@ -137,9 +137,6 @@ export const EvidenceSearch = () => {
                 <div>
                     {evidenceCardTest}
                 </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     )

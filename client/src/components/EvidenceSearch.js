@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { EvidenceCard } from './EvidenceCard';
 
+
 export const EvidenceSearch = () => {
 
     const [seMethods, setSEMethods] = useState([]);
@@ -15,9 +16,13 @@ export const EvidenceSearch = () => {
         endYear: ''
     });
 
+
     const [testObj, setTestObj] = useState([{}]);
     const [showResults, setShowResults] = useState(false);
     const [evidenceCardTest, setEvidenceCards] = useState([]);
+
+    const [testObj, setTestObj] = useState({});
+
 
     //Temporary SE Methods list
     const seList = [
@@ -71,6 +76,7 @@ export const EvidenceSearch = () => {
         e.preventDefault();
     }
 
+
     // if(testObj) {
     //     console.log("There is evidence!");
 
@@ -88,6 +94,7 @@ export const EvidenceSearch = () => {
             ));
         }
     }
+
 
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
@@ -129,6 +136,9 @@ export const EvidenceSearch = () => {
                 </div>
                 <div>
                     {evidenceCardTest}
+                </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

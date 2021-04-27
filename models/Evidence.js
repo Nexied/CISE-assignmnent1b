@@ -22,7 +22,7 @@ const EvidenceSchema = new mongoose.Schema({
     },
     claim:{
         type: String, 
-        required: true;
+        required: true,
         description: "Describe what the paper claims"
     },
     claimStrength: {

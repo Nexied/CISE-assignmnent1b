@@ -5,10 +5,10 @@ const EvidenceSchema = new mongoose.Schema({
         type: String, //type of data
         required: true //input is required
     },
-    author: [{
+    author: {
         type: String,
         required: true
-    }],
+    },
     title: {
         type: String,
         required: true

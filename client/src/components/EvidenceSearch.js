@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { EvidenceCard } from './EvidenceCard';
+
 
 export const EvidenceSearch = () => {
 
@@ -14,7 +16,13 @@ export const EvidenceSearch = () => {
         endYear: ''
     });
 
+
+    const [testObj, setTestObj] = useState([{}]);
+    const [showResults, setShowResults] = useState(false);
+    const [evidenceCardTest, setEvidenceCards] = useState([]);
+
     const [testObj, setTestObj] = useState({});
+
 
     //Temporary SE Methods list
     const seList = [
@@ -68,6 +76,26 @@ export const EvidenceSearch = () => {
         e.preventDefault();
     }
 
+
+    // if(testObj) {
+    //     console.log("There is evidence!");
+
+    //     evidenceCardTest = testObj.map((evid, k) =>
+    //         <EvidenceCard evidenceData={evid} key={k} />
+    //     );
+    // }
+
+    const ShowResultsTest = () => {
+        if(testObj) {
+            console.log("There is evidence!");
+    
+            setEvidenceCards(testObj.map((evid, k) =>
+                <EvidenceCard evidenceData={evid} key={k} />
+            ));
+        }
+    }
+
+
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
             <div className="row">
@@ -102,6 +130,13 @@ export const EvidenceSearch = () => {
                             <input className="form-control" type="text" name="endYear" onChange={onChange} maxLength="4" placeholder="End Year e.g. 2010"></input>
 
                             <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit" onSubmit={onSubmit}>Search</button>
+                            <button className="btn btn-default bg-dark text-light border border-light mt-3" type="button" onClick={ShowResultsTest}>Get Results</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    {evidenceCardTest}
+                </div>
                         </div>
                     </form>
                 </div>

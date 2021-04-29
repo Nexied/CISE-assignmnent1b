@@ -12,15 +12,21 @@ export const  ShowEvidenceResults = (props) => {
 
     useEffect(() => {
         console.log("ShowEvidencePage Loaded!");
+        console.log(props.location.searchParams);
         if(props.location.searchParams) {
-            //console.log(Object.keys(props.location.searchParams));
             console.log("there is props");
-            setSearchParameters(props.location.searchParams.searchInfo);
+            setSearchParameters(props.location.searchParams);
         }
+
         // Ideally get the key of the object that is parsed into this component
         // via props.location.searchParams and then get the key/value pairs into the 
         //searchParameters state so that attributes can be accessed directly
         // console.log(Object.keys(searchParameters));
+
+        //New info: change to statement above ^ 
+        //Actually, it is a matter of using a triple dot operator as the prop
+        //is actually an object inside an object rather than replacing the object
+        //with the object's attributes
 
         axios
             .get('http://localhost:8082/api/evidences/')
@@ -41,7 +47,8 @@ export const  ShowEvidenceResults = (props) => {
         let newResults = [];
         console.log(data);
         data.forEach(element => {
-            if(element.sePractice === searchParameters.seMethod && element.claim === searchParameters.claim) {
+            if(element.sePractice === searchParameters.seMethod && element.claim === searchParameters.claim
+                && element.year >= searchParameters.startYear && element.year <= searchParameters.endYear) {
                 newResults.push(element);
             }
         });

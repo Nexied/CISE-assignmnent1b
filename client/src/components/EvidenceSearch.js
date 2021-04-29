@@ -33,6 +33,8 @@ export const EvidenceSearch = () => {
     const claimsList = [
         { label: "Improves Code Quality", value: "Improves Code Quality"},
         { label: "More efficient code production", value: "Code Production Efficiency"},
+        { label: "Improve Team Quality", value: "Improve Team Quality"},
+        { label: "Improve App Quality",  value: "Improve app quality"}
     ];
         
     useEffect(() => {
@@ -104,7 +106,7 @@ export const EvidenceSearch = () => {
                             {/* <button className="btn btn-default bg-dark text-light border border-light mt-3" type="button" onClick={ShowResultsTest}>Get Results</button> */}
                             <Link to={{
                                 pathname:`/show-results`, 
-                                searchParams: {searchInfo}
+                                searchParams: {...searchInfo}
                                 }}
                                 className="btn btn-outline-info btn-lg btn-block">
                                 View Results

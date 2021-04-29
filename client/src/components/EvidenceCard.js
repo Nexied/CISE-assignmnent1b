@@ -7,9 +7,11 @@ export const EvidenceCard = ({evidenceData}) => {
 
     return (
         <tr>
-            <td>{evidence.article}</td>
-            <td>{evidence.author}</td>
             <td>{evidence.title}</td>
+            <td>{evidence.author}</td>
+            <td>{evidence.year}</td>
+            <td>{evidence.sePractice}</td>
+            <td>{evidence.claim}</td>
             <td>{evidence.claimStrength}</td>
         </tr>
     )

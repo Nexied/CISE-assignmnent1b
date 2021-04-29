@@ -33,7 +33,7 @@ export const EvidenceSearch = () => {
     const claimsList = [
         { label: "Improves Code Quality", value: "Improves Code Quality"},
         { label: "More efficient code production", value: "Code Production Efficiency"},
-        { label: "Improve Team Quality", value: "Improve Team Quality"},
+        { label: "Improve Team Quality", value: "Improve team quality"},
         { label: "Improve App Quality",  value: "Improve app quality"}
     ];
         

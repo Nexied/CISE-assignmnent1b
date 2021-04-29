@@ -68,21 +68,23 @@ export const  ShowEvidenceResults = (props) => {
     }
 
     return (
-        <div id="result-container" className="container-fluid bg-dark text-light" style={{height: "100%"}}>
-            <div className="row">
-                <div className="col-12">
-                    {/* Nav bar here? */}
+        <div className="box bg-dark">
+            <div id="result-container" className="container-fluid bg-dark text-light" style={{height: "100%"}}>
+                <div className="row">
+                    <div className="col-12">
+                        {/* Nav bar here? */}
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-12">
-                    <h1 className="display-2">SEEDS</h1>
+                <div className="row">
+                    <div className="col-12">
+                        <h1 className="display-2">SEEDS</h1>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-12">
-                    <div className="container-fluid">
-                        {displayItems}
+                <div className="row">
+                    <div className="col-12">
+                        <div className="container-fluid">
+                            {displayItems}
+                        </div>
                     </div>
                 </div>
             </div>

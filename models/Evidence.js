@@ -5,10 +5,10 @@ const EvidenceSchema = new mongoose.Schema({
         type: String, //type of data
         required: true //input is required
     },
-    author: [{
+    author: {
         type: String,
         required: true
-    }],
+    },
     title: {
         type: String,
         required: true
@@ -19,24 +19,14 @@ const EvidenceSchema = new mongoose.Schema({
     year: {
         type: String
     },
-    eprint: {
-        type: String
+    sePractice:{
+        type: String, 
+        required: true
     },
-    eprinttype: {
-        type: String
+    claim:{
+        type: String, 
+        required: true,
     },
-    eprintclass: {
-        type: String
-    },
-    pages: {
-        type: String
-    },
-    month: {
-        type: String
-    },
-    annot: {
-        type: String
-    }, 
     claimStrength: {
         type: String,
         required: true

@@ -9,7 +9,7 @@ function App() {
         <Route exact path='/' component={EvidenceSearch} />
         <Route path='/show-results' component={ShowEvidenceResults} />
       </div>
-  </Router>
+    </Router>
   );
 }
 

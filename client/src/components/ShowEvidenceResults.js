@@ -58,12 +58,16 @@ export const  ShowEvidenceResults = (props) => {
     if(searchResults) {
         let results = filterResults(searchResults);
         console.log(results);
-        displayItems = <table class="table text-light">
+        if(results.length > 0) {
+            displayItems = <table class="table text-light">
             {
                 results.map((result, k) =>
                 <EvidenceCard evidenceData={result} key={k}/>)
             }
         </table>
+        } else {
+            displayItems = <h2 class="lead text-light">No Results Found</h2>
+        }
         console.log("There are results returned");
     }
 

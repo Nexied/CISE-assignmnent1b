@@ -66,10 +66,6 @@ export const EvidenceSearch = () => {
     //     );
     // }
 
-    const ShowResultsTest = () => {
-
-    }
-
 
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>

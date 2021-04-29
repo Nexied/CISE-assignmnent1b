@@ -7,14 +7,20 @@ export const  ShowEvidenceResults = (props) => {
 
     const [searchParameters, setSearchParameters] = useState({});
     const [searchResults, setSearchResults] = useState([{}]);
-    //const [resultsDisplay, setResultsDisplay] = useState([]);
 
     let displayItems;
 
     useEffect(() => {
         console.log("ShowEvidencePage Loaded!");
-        console.log(props.location.searchParams);
-        setSearchParameters(props.location.searchParams);
+        if(props.location.searchParams) {
+            //console.log(Object.keys(props.location.searchParams));
+            console.log("there is props");
+            setSearchParameters(props.location.searchParams.searchInfo);
+        }
+        // Ideally get the key of the object that is parsed into this component
+        // via props.location.searchParams and then get the key/value pairs into the 
+        //searchParameters state so that attributes can be accessed directly
+        // console.log(Object.keys(searchParameters));
 
         axios
             .get('http://localhost:8082/api/evidences/')
@@ -28,10 +34,26 @@ export const  ShowEvidenceResults = (props) => {
             })  
     }, []);
 
+    console.log(searchParameters.seMethod);
+
+    //Filter Results:
+    const filterResults = (data) => {
+        let newResults = [];
+        console.log(data);
+        data.forEach(element => {
+            if(element.sePractice === searchParameters.seMethod && element.claim === searchParameters.claim) {
+                newResults.push(element);
+            }
+        });
+        return newResults;
+    }
+
     if(searchResults) {
+        let results = filterResults(searchResults);
+        console.log(results);
         displayItems = <table class="table text-light">
             {
-                searchResults.map((result, k) =>
+                results.map((result, k) =>
                 <EvidenceCard evidenceData={result} key={k}/>)
             }
         </table>

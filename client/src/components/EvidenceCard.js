@@ -10,6 +10,7 @@ export const EvidenceCard = ({evidenceData}) => {
             <td>{evidence.article}</td>
             <td>{evidence.author}</td>
             <td>{evidence.title}</td>
+            <td>{evidence.claimStrength}</td>
         </tr>
     )
 }

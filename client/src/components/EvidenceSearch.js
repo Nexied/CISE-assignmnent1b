@@ -15,9 +15,7 @@ export const EvidenceSearch = () => {
         startYear: '',
         endYear: ''
     });
-
-
-    const [testObj, setTestObj] = useState([{}]);
+  
     const [showResults, setShowResults] = useState(false);
     const [evidenceCardTest, setEvidenceCards] = useState([]);
 
@@ -31,68 +29,35 @@ export const EvidenceSearch = () => {
         { label: "AGILE", value: "AGILE"},
     ];
 
+    //TODO: Try get the list of SE methods from a database/script list
     const claimsList = [
         { label: "Improves Code Quality", value: "Improves Code Quality"},
         { label: "More efficient code production", value: "Code Production Efficiency"},
+        { label: "Improve Team Quality", value: "Improve team quality"},
+        { label: "Improve App Quality",  value: "Improve app quality"}
     ];
-
-
-
-    //Try get the list of SE methods from a database/script list
-    // const optionsList = itemsList.map((item) => 
-    //         <option>{item}</option>
-    //     );
         
     useEffect(() => {
         console.log("Website loaded!");
-        //console.log("Print id: " + props.match.params.id);
-        axios
-            .get('http://localhost:8082/api/evidences/')
-            .then(res => {
-                console.log("Print-EvidenceSearch-API-response: " + res.data);
-                console.log("The res data: " + res.data);
-                setTestObj(res.data);
-            })
-            .catch(err => {
-                console.log("Error from EvidenceSearch" + err.name);
-            })      
+        //console.log("Print id: " + props.match.params.id);   
     }, []);
 
     const onChange = e => {
         console.log(e);
         setSearchInfo({ ...searchInfo, [e.target.name]: e.target.value });
         console.log(searchInfo);
-        console.log(testObj);
     }
 
-    const onSelectChange = (e, value) => {
-        console.log(e);
-        console.log(value);
+    const onSelectChange = (e, attribute) => {
+        console.log(e.value);
+        console.log("The actual attribute: " + attribute);
+        setSearchInfo({...searchInfo, [attribute]: e.value});
     }
+
 
     const onSubmit = e => {
         e.preventDefault();
     }
-
-
-    // if(testObj) {
-    //     console.log("There is evidence!");
-
-    //     evidenceCardTest = testObj.map((evid, k) =>
-    //         <EvidenceCard evidenceData={evid} key={k} />
-    //     );
-    // }
-
-    const ShowResultsTest = () => {
-        if(testObj) {
-            console.log("There is evidence!");
-    
-            setEvidenceCards(testObj.map((evid, k) =>
-                <EvidenceCard evidenceData={evid} key={k} />
-            ));
-        }
-    }
-
 
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
@@ -128,7 +93,14 @@ export const EvidenceSearch = () => {
                             <input className="form-control" type="text" name="endYear" onChange={onChange} maxLength="4" placeholder="End Year e.g. 2010"></input>
 
                             <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit" onSubmit={onSubmit}>Search</button>
-                            <button className="btn btn-default bg-dark text-light border border-light mt-3" type="button" onClick={ShowResultsTest}>Get Results</button>
+
+                            <Link to={{
+                                pathname:`/show-results`, 
+                                searchParams: {...searchInfo}
+                                }}
+                                className="btn btn-outline-info btn-lg btn-block">
+                                View Results
+                            </Link>
                         </div>
                     </form>
                 </div>

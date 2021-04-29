@@ -6,10 +6,13 @@ export const EvidenceCard = ({evidenceData}) => {
     console.log(evidence.article);
 
     return (
-        <div className="container-fluid bg-dark text-light border border-light">
-            <h2>{evidence.article}</h2>
-            <p>{evidence.author}</p>
-            <p>{evidence.title}</p>
-        </div>
+        <tr>
+            <td>{evidence.title}</td>
+            <td>{evidence.author}</td>
+            <td>{evidence.year}</td>
+            <td>{evidence.sePractice}</td>
+            <td>{evidence.claim}</td>
+            <td>{evidence.claimStrength}</td>
+        </tr>
     )
 }

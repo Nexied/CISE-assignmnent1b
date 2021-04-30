@@ -15,7 +15,7 @@ export const EvidenceSearch = () => {
         startYear: '',
         endYear: ''
     });
-
+  
     const [showResults, setShowResults] = useState(false);
     const [evidenceCardTest, setEvidenceCards] = useState([]);
 
@@ -33,6 +33,8 @@ export const EvidenceSearch = () => {
     const claimsList = [
         { label: "Improves Code Quality", value: "Improves Code Quality"},
         { label: "More efficient code production", value: "Code Production Efficiency"},
+        { label: "Improve Team Quality", value: "Improve team quality"},
+        { label: "Improve App Quality",  value: "Improve app quality"}
     ];
         
     useEffect(() => {
@@ -44,7 +46,6 @@ export const EvidenceSearch = () => {
         console.log(e);
         setSearchInfo({ ...searchInfo, [e.target.name]: e.target.value });
         console.log(searchInfo);
-
     }
 
     const onSelectChange = (e, attribute) => {
@@ -53,23 +54,10 @@ export const EvidenceSearch = () => {
         setSearchInfo({...searchInfo, [attribute]: e.value});
     }
 
+
     const onSubmit = e => {
         e.preventDefault();
     }
-
-
-    // if(testObj) {
-    //     console.log("There is evidence!");
-
-    //     evidenceCardTest = testObj.map((evid, k) =>
-    //         <EvidenceCard evidenceData={evid} key={k} />
-    //     );
-    // }
-
-    const ShowResultsTest = () => {
-
-    }
-
 
     return (
         <div className="container-fluid bg-dark text-light" style={{height: "100vh"}}>
@@ -105,10 +93,10 @@ export const EvidenceSearch = () => {
                             <input className="form-control" type="text" name="endYear" onChange={onChange} maxLength="4" placeholder="End Year e.g. 2010"></input>
 
                             <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit" onSubmit={onSubmit}>Search</button>
-                            {/* <button className="btn btn-default bg-dark text-light border border-light mt-3" type="button" onClick={ShowResultsTest}>Get Results</button> */}
+
                             <Link to={{
                                 pathname:`/show-results`, 
-                                searchParams: {searchInfo}
+                                searchParams: {...searchInfo}
                                 }}
                                 className="btn btn-outline-info btn-lg btn-block">
                                 View Results

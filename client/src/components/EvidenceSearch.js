@@ -92,8 +92,6 @@ export const EvidenceSearch = () => {
                             <input className="form-control" type="text" name="startYear" onChange={onChange} maxLength="4" placeholder="Start Year e.g. 2000"></input>
                             <input className="form-control" type="text" name="endYear" onChange={onChange} maxLength="4" placeholder="End Year e.g. 2010"></input>
 
-                            <button className="btn btn-default bg-dark text-light border border-light mt-3" type="submit" onSubmit={onSubmit}>Search</button>
-
                             <Link to={{
                                 pathname:`/show-results`, 
                                 searchParams: {...searchInfo}

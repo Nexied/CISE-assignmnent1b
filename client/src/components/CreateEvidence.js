@@ -1,0 +1,65 @@
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+
+class CreateEvidence extends Component {
+    constructor(){
+        super();
+        this.state = {
+            article: '',
+            author: '',
+            title: '',
+            journal:'',
+            eprint: '',
+            eprinttype: '',
+            eprintclass: '',
+            pages: '',
+            month: '',
+            annote: '',
+            claimStrength: ''
+        }
+    }
+}
+
+onChange = e => {
+    this.setState({[e.target.name]: e.target.value });
+};
+
+onSubmit = e => {
+    e.preventDefault();
+
+    const data = {
+        article: this.state.article,
+        author: this.state.author,
+        title: this.state.title,
+        journal: this.state.journal,
+        eprint: this.state.eprint,
+        eprinttype: this.state.eprinttype,
+        eprintclass: this.state.eprintclass,
+        pages: this.state.pages,
+        month: this.state.month,
+        annote: this.state.annote,
+        claimStrength: this.state.claimStrength
+    }
+
+    axios.post('http://localhost:8082/api/evidences', data)
+    .then(res => {
+        this.setState({
+            article: '',
+            author: '',
+            title: '',
+            journal:'',
+            eprint: '',
+            eprinttype: '',
+            eprintclass: '',
+            pages: '',
+            month: '',
+            annot: '',
+            claimStrength: ''
+        })
+        this.props.history.push('/');
+    })
+    .catch(err => {
+        console.log("error in create evidence");
+    })
+};

@@ -9,6 +9,7 @@
         "jsx-a11y",
         "prettier"
     ],
+    "root": true,
     "rules": {
         "semi": 0,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

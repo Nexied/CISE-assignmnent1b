@@ -1,3 +1,5 @@
+/* eslint-disable import/newline-after-import */
+/* eslint-disable import/no-extraneous-dependencies */
 require("dotenv").config({path: "./config.env"});
 const express = require("express");
 const connectDB = require('./config/db');

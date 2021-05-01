@@ -1,16 +1,18 @@
-import { EvidenceSearch } from './components/EvidenceSearch';
-import { ShowEvidenceResults } from './components/ShowEvidenceResults';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+/* eslint-disable import/order */
+/* eslint-disable react/react-in-jsx-scope */
+import { EvidenceSearch } from "./components/EvidenceSearch"
+import { ShowEvidenceResults } from "./components/ShowEvidenceResults"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 function App() {
   return (
     <Router>
       <div>
-        <Route exact path='/' component={EvidenceSearch} />
-        <Route path='/show-results' component={ShowEvidenceResults} />
+        <Route exact path="/" component={EvidenceSearch} />
+        <Route path="/show-results" component={ShowEvidenceResults} />
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -9,7 +9,6 @@
         "jsx-a11y",
         "prettier"
     ],
-    "ignorePatterns": ["reportWebVitals.js", "index.js", "ShowEvidenceResults.js", "EvidenceCard.js", "EvidenceSearch.js", "CreateEvidence.js"],
     "rules": {
         "semi": 0,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

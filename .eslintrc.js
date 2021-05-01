@@ -10,6 +10,9 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
+  "eslintConfig": {
+    "extends": "react-app"   
+  },
   rules: {
     semi: 0,
     'no-console': 'off',

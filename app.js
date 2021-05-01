@@ -1,12 +1,13 @@
-const express = require("express");
-const connectDB = require('./config/db');
-var cors = require('cors');
-
+/* eslint-disable import/newline-after-import */
+/* eslint-disable import/no-extraneous-dependencies */
+const express = require('express')
+const cors = require('cors')
+const connectDB = require('./config/db')
 const app = express();
 
 const routes = require('./routes/api/evidences');
 
-//connect to DB 
+// connect to DB
 connectDB();
 
 // cors
@@ -16,7 +17,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => {
-    res.send("Hello world! Team assignment 1b");
+  res.send('Hello world! Team assignment 1b');
 });
 
 app.use('/api/evidences', routes);
@@ -24,5 +25,5 @@ app.use('/api/evidences', routes);
 const port = process.env.PORT || 8082;
 
 app.listen(port, () => {
-    console.log(`Serving running on port ${port}`);
+  console.log(`Serving running on port ${port}`);
 })

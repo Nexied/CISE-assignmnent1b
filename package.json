@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "seeds",
   "version": "1.0.0",
@@ -33,3 +34,39 @@
     "prettier": "^2.2.1"
   }
 }
+=======
+{
+  "name": "seeds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app": "nodemon app.js",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.5",
+    "react-select": "^4.3.0",
+    "validation": "0.0.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  }
+}
+>>>>>>> e114ceecb5c58182d91487d383405554ae531c8f

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import { EvidenceCard } from "./EvidenceCard"
 
-export const ShowEvidenceResults = props => {
+export const ShowEvidenceResults = (props) => {
   const [searchParameters, setSearchParameters] = useState({})
   const [searchResults, setSearchResults] = useState([{}])
 
@@ -35,12 +35,12 @@ export const ShowEvidenceResults = props => {
 
     axios
       .get("http://localhost:8082/api/evidences/")
-      .then(res => {
+      .then((res) => {
         console.log(`Print-ShowEvidenceResults-API-response: ${res.data}`)
         console.log(`The res data: ${res.data}`)
         setSearchResults(res.data)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(`Error from Show Evidence Results${err.name}`)
       })
   }, [props.location.searchParams])
@@ -48,10 +48,10 @@ export const ShowEvidenceResults = props => {
   console.log(searchParameters.seMethod)
 
   // Filter Results:
-  const filterResults = data => {
+  const filterResults = (data) => {
     const newResults = []
     console.log(data)
-    data.forEach(element => {
+    data.forEach((element) => {
       if (
         element.sePractice === searchParameters.seMethod &&
         element.claim === searchParameters.claim &&

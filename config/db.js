@@ -1,16 +1,16 @@
+/* eslint-disable no-irregular-whitespace */
 /* eslint-disable import/newline-after-import */
-
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+// const config = require('config');
+// const db = config.get('mongoURI');
 
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      db,
+      process.env.MONGO_URI,
       {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
+        useUnifiedTopology: true,
         useFindAndModify: false,
       },
     );

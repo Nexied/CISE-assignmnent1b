@@ -15,7 +15,7 @@ export const EvidenceSearch = () => {
     seMethod: "",
     claim: "",
     startYear: "",
-    endYear: ""
+    endYear: "",
   })
 
   const [showResults, setShowResults] = useState(false)
@@ -27,7 +27,7 @@ export const EvidenceSearch = () => {
     { label: "FDD", value: "FDD" },
     { label: "SCRUM", value: "SCRUM" },
     { label: "UNIT-TESTING", value: "UNIT-TESTING" },
-    { label: "AGILE", value: "AGILE" }
+    { label: "AGILE", value: "AGILE" },
   ]
 
   // TODO: Try get the list of SE methods from a database/script list
@@ -35,10 +35,10 @@ export const EvidenceSearch = () => {
     { label: "Improves Code Quality", value: "Improves Code Quality" },
     {
       label: "More efficient code production",
-      value: "Code Production Efficiency"
+      value: "Code Production Efficiency",
     },
     { label: "Improve Team Quality", value: "Improve team quality" },
-    { label: "Improve App Quality", value: "Improve app quality" }
+    { label: "Improve App Quality", value: "Improve app quality" },
   ]
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const EvidenceSearch = () => {
     // console.log("Print id: " + props.match.params.id);
   }, [])
 
-  const onChange = e => {
+  const onChange = (e) => {
     console.log(e)
     setSearchInfo({ ...searchInfo, [e.target.name]: e.target.value })
     console.log(searchInfo)
@@ -58,7 +58,7 @@ export const EvidenceSearch = () => {
     setSearchInfo({ ...searchInfo, [attribute]: e.value })
   }
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault()
   }
 
@@ -82,7 +82,7 @@ export const EvidenceSearch = () => {
               <label className="lead fs-2">SE Practice:</label>
               <Select
                 className="text-dark"
-                onChange={e => {
+                onChange={(e) => {
                   onSelectChange(e, "seMethod")
                 }}
                 options={seList}
@@ -92,7 +92,7 @@ export const EvidenceSearch = () => {
               <label className="lead fs-2">Claim:</label>
               <Select
                 className="text-dark"
-                onChange={e => onSelectChange(e, "claim")}
+                onChange={(e) => onSelectChange(e, "claim")}
                 options={claimsList}
               />
               <br />
@@ -126,7 +126,7 @@ export const EvidenceSearch = () => {
               <Link
                 to={{
                   pathname: `/show-results`,
-                  searchParams: { ...searchInfo }
+                  searchParams: { ...searchInfo },
                 }}
                 className="btn btn-outline-info btn-lg btn-block"
               >

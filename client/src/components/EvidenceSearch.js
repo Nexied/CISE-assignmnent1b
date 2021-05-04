@@ -35,7 +35,7 @@ export const EvidenceSearch = () => {
     { label: "Improves Code Quality", value: "Improves Code Quality" },
     {
       label: "More efficient code production",
-      value: "Code Production Efficiency"
+      value: "Code Production Efficiency",
     },
     { label: "Improve Team Quality", value: "Improve team quality" },
     { label: "Improve App Quality", value: "Improve app quality" },
@@ -92,7 +92,7 @@ export const EvidenceSearch = () => {
               <label className="lead fs-2">Claim:</label>
               <Select
                 className="text-dark"
-                onChange={e => onSelectChange((e), "claim")}
+                onChange={(e) => onSelectChange((e), "claim")}
                 options={claimsList}
               />
               <br />

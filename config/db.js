@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 /* eslint-disable import/newline-after-import */
 const mongoose = require('mongoose');
 // const config = require('config');
@@ -10,12 +11,11 @@ const connectDB = async () => {
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
-      }
+        useFindAndModify: false,
+      },
     );
 
     console.log('MongoDB is Connected...');
-    
   } catch (err) {
     console.error(err.message);
     process.exit(1);

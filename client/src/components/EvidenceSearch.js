@@ -72,7 +72,7 @@ export const EvidenceSearch = () => {
       </div>
       <div className="row">
         <div className="col-12">
-          <h1 className="display-2">SEEDS</h1>
+          <h1 className="display-2">SEEDS Version 1</h1>
         </div>
       </div>
       <div className="row align-items-center">

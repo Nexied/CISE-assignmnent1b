@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "pretty": "npx prettier --no-semi --trailing-comma none --arrow-parens avoid --write /src/components"
+    "pretty": "npx prettier --no-semi --trailing-comma none --arrow-parens avoid --write \"**/*.js\""
   },
   "eslintConfig": {
     "extends": [

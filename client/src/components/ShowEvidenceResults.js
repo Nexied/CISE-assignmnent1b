@@ -34,7 +34,7 @@ export const ShowEvidenceResults = props => {
     // with the object's attributes
 
     axios
-      .get("./api/evidences/")
+      .get("http://localhost:5000/api/evidences/")
       .then(res => {
         console.log(`Print-ShowEvidenceResults-API-response: ${res.data}`)
         console.log(`The res data: ${res.data}`)
@@ -95,6 +95,19 @@ export const ShowEvidenceResults = props => {
         <div className="row">
           <div className="col-12">
             <h1 className="display-2">SEEDS</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 text-right">
+            <p className="lead d-inline">Sort by: </p>
+            <select id="sorting" className="d-inline">
+              <option hidden disabled>
+                Sort
+              </option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="year">Year</option>
+            </select>
           </div>
         </div>
         <div className="row">

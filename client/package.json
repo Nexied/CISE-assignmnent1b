@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "pretty": "npx prettier --no-semi --trailing-comma none --arrow-parens avoid --write /src/components"
   },
   "eslintConfig": {
     "extends": [

@@ -35,7 +35,7 @@ export const ShowEvidenceResults = (props) => {
 
     axios
       .get("./api/evidences/")
-      .then((res) => {
+      .then(res => {
         console.log(`Print-ShowEvidenceResults-API-response: ${res.data}`)
         console.log(`The res data: ${res.data}`)
         setSearchResults(res.data)

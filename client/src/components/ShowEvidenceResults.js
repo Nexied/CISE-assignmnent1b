@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import { EvidenceCard } from "./EvidenceCard"
 
-export const ShowEvidenceResults = (props) => {
+export const ShowEvidenceResults = props => {
   const [searchParameters, setSearchParameters] = useState({})
   const [searchResults, setSearchResults] = useState([{}])
 
@@ -34,13 +34,13 @@ export const ShowEvidenceResults = (props) => {
     // with the object's attributes
 
     axios
-      .get("./api/evidences/")
-      .then((res) => {
+      .get("http://localhost:5000/api/evidences/")
+      .then(res => {
         console.log(`Print-ShowEvidenceResults-API-response: ${res.data}`)
         console.log(`The res data: ${res.data}`)
         setSearchResults(res.data)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(`Error from Show Evidence Results${err.name}`)
       })
   }, [props.location.searchParams])
@@ -48,10 +48,10 @@ export const ShowEvidenceResults = (props) => {
   console.log(searchParameters.seMethod)
 
   // Filter Results:
-  const filterResults = (data) => {
+  const filterResults = data => {
     const newResults = []
     console.log(data)
-    data.forEach((element) => {
+    data.forEach(element => {
       if (
         element.sePractice === searchParameters.seMethod &&
         element.claim === searchParameters.claim &&
@@ -95,6 +95,19 @@ export const ShowEvidenceResults = (props) => {
         <div className="row">
           <div className="col-12">
             <h1 className="display-2">SEEDS</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 text-right">
+            <p className="lead d-inline">Sort by: </p>
+            <select id="sorting" className="d-inline">
+              <option hidden disabled>
+                Sort
+              </option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="year">Year</option>
+            </select>
           </div>
         </div>
         <div className="row">

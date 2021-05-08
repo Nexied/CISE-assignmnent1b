@@ -38,13 +38,8 @@ export const ShowEvidenceResults = (props) => {
     // with the object's attributes
 
     axios
-<<<<<<< HEAD
-      .get("./api/evidences/")
-      .then((res) => {
-=======
       .get("http://localhost:5000/api/evidences/")
       .then(res => {
->>>>>>> 51d7c1f3ea3bf0304be58e670065473159823f8f
         console.log(`Print-ShowEvidenceResults-API-response: ${res.data}`)
         console.log(`The res data: ${res.data}`)
         setSearchResults(res.data)

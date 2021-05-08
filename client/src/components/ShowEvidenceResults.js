@@ -4,6 +4,9 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable no-else-return */
+
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
@@ -12,6 +15,7 @@ import { EvidenceCard } from "./EvidenceCard"
 export const ShowEvidenceResults = (props) => {
   const [searchParameters, setSearchParameters] = useState({})
   const [searchResults, setSearchResults] = useState([{}])
+  const [sortingOption, setSortingOption] = useState()
 
   let displayItems
 
@@ -34,8 +38,13 @@ export const ShowEvidenceResults = (props) => {
     // with the object's attributes
 
     axios
+<<<<<<< HEAD
       .get("./api/evidences/")
       .then((res) => {
+=======
+      .get("http://localhost:5000/api/evidences/")
+      .then(res => {
+>>>>>>> 51d7c1f3ea3bf0304be58e670065473159823f8f
         console.log(`Print-ShowEvidenceResults-API-response: ${res.data}`)
         console.log(`The res data: ${res.data}`)
         setSearchResults(res.data)
@@ -46,6 +55,11 @@ export const ShowEvidenceResults = (props) => {
   }, [props.location.searchParams])
 
   console.log(searchParameters.seMethod)
+
+  // On option change
+  const onOpChange = e => {
+    setSortingOption(e.target.value)
+  }
 
   // Filter Results:
   const filterResults = (data) => {
@@ -64,17 +78,66 @@ export const ShowEvidenceResults = (props) => {
     return newResults
   }
 
+  // Sort reults based on the user's choice
+  const sortResults = () => {
+    const sortOption = sortingOption
+    console.log(`Search result being sorted: ${sortOption}`)
+    const results = filterResults(searchResults)
+    console.log(`the results: ${results}`)
+    const sortedResults = results
+
+    // Sort by the year
+    if (sortOption === "year") {
+      sortedResults.sort((a, b) => a.year - b.year)
+      console.log(sortedResults)
+      // Sort by the title
+    } else if (sortOption === "title") {
+      sortedResults.sort((a, b) => {
+        if (a.title < b.title) {
+          return -1
+        } else if (a.title > b.title) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+      // Sort by the author
+    } else if (sortOption === "author") {
+      sortedResults.sort((a, b) => {
+        if (a.author < b.author) {
+          return -1
+        } else if (a.author > b.author) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+    }
+
+    displayItems = (
+      <table className="table text-light">
+        {sortedResults.map((result, k) => (
+          <EvidenceCard evidenceData={result} key={k} />
+        ))}
+      </table>
+    )
+  }
+
   if (searchResults) {
     const results = filterResults(searchResults)
     console.log(results)
     if (results.length > 0) {
-      displayItems = (
-        <table className="table text-light">
-          {results.map((result, k) => (
-            <EvidenceCard evidenceData={result} key={k} />
-          ))}
-        </table>
-      )
+      if (sortingOption != null) {
+        sortResults()
+      } else {
+        displayItems = (
+          <table className="table text-light">
+            {results.map((result, k) => (
+              <EvidenceCard evidenceData={result} key={k} />
+            ))}
+          </table>
+        )
+      }
     } else {
       displayItems = <h2 className="lead text-light">No Results Found</h2>
     }
@@ -95,6 +158,19 @@ export const ShowEvidenceResults = (props) => {
         <div className="row">
           <div className="col-12">
             <h1 className="display-2">SEEDS</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 text-right">
+            <p className="lead d-inline">Sort by: </p>
+            <select id="sorting" onChange={onOpChange} className="d-inline">
+              <option hidden selected value>
+                Sort
+              </option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="year">Year</option>
+            </select>
           </div>
         </div>
         <div className="row">

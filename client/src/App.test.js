@@ -1,12 +1,20 @@
+import { render } from "@testing-library/react"
 import React from "react";
-import App from "./App";
+import { App } from "./App";
 import { EvidenceSearch } from "./components/EvidenceSearch"
 import { ShowEvidenceResults } from "./components/ShowEvidenceResults"
-import { shallow, mount, render } from 'enzyme'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
-describe("Testing", () => {
-    test("render it", () => {
-        const wrapper = shallow(<App />)
-        expect(wrapper.find('Router').contains("div Router"))
-    })
+
+test("render it", () => {
+    const component = render(
+        <Router>
+            <div>
+                <Route exact path="/" component={EvidenceSearch} />
+                <Route path="/show-results" component={ShowEvidenceResults} />
+            </div>
+        </Router>
+    )
+    expect(component.container).toMatchSnapshot()
 })
+

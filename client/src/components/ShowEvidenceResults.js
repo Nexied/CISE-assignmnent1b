@@ -52,7 +52,7 @@ export const ShowEvidenceResults = props => {
   console.log(searchParameters.seMethod)
 
   // On option change
-  const onOpChange = e => {
+  const onOpChange = (e) => {
     setSortingOption(e.target.value)
   }
 

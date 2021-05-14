@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
 // @route GET api/evidences
 // @description add/save evidence
 // @access public
-router.post('/:', (req, res) => {
+router.post('/', (req, res) => {
   Evidence.create(req.body)
     .then((_evidence) => res.json({ msg: 'Evidence added successfully' }))
     .catch((_err) => res.status(404).json({ error: 'unable to add this evidence' }));

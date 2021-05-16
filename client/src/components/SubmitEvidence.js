@@ -21,10 +21,10 @@ export const SubmitEvidence = () => {
   })
 
   const claimStrengths = [
-    { label: "Weakly Supports", value: "TDD" },
-    { label: "Strongly Supports", value: "FDD" },
-    { label: "Weakly Against", value: "SCRUM" },
-    { label: "Strongly Against", value: "UNIT-TESTING" }
+    { label: "Weakly Supports", value: "Weakly Supports" },
+    { label: "Strongly Supports", value: "Strongly Supports" },
+    { label: "Weakly Against", value: "Weakly Against" },
+    { label: "Strongly Against", value: "Strongly Against" }
   ]
 
   const onChange = e => {

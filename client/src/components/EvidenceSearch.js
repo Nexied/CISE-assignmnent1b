@@ -68,16 +68,11 @@ export const EvidenceSearch = () => {
       style={{ height: "100vh" }}
     >
       <div className="row">
-        <div className="col-8">
+        <div className="col-12">{/* Nav bar here? */}</div>
+      </div>
+      <div className="row">
+        <div className="col-12">
           <h1 className="display-2">SEEDS Version 1</h1>
-        </div>
-        <div className="col-4 my-auto">
-          <Link
-            to={{ pathname: `/submit-evidence` }}
-            className="btn btn-outline-light btn-lg btn-block"
-          >
-            Submit Evidence
-          </Link>
         </div>
       </div>
       <div className="row align-items-center">
@@ -119,6 +114,14 @@ export const EvidenceSearch = () => {
                 maxLength="4"
                 placeholder="End Year e.g. 2010"
               />
+
+              <button
+                className="btn btn-default bg-dark text-light border border-light mt-3"
+                type="submit"
+                onSubmit={onSubmit}
+              >
+                Search
+              </button>
 
               <Link
                 to={{
